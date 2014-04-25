@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="app_index.css"/>
+<title>Final Project</title>
+
+<script type="text/javascript" src="tttApp.js"></script>
+</head>
+
+<body>
+<script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+
+
+
+<header>Tic Tac Toe</header>
+
+<center>
+<SCRIPT name = "JavaScript">
+
+
+function variables(){
+    t = 1;
+    change = 1;    
+    square1 = -1;
+    square2 = -1;
+    square3 = -1;
+    square4 = -1;
+    square5 = -1;
+    square6 = -1;
+    square7 = -1;
+    square8 = -1;
+    square9 = -1;
+    return;
+    whogoesnow = "Turn Player 1"
+}
+
+function win(){
+  if   (square1==square2 && square2==square3 && square3==0 ||
+square4==square5 && square5==square6 && square6==0 ||    
+        square7==square8 && square8==square9 && square9==0 ||
+        square1==square4 && square4==square7 && square7==0 ||
+        square2==square5 && square5==square8 && square8==0 ||
+        square3==square6 && square6==square9 && square9==0 ||
+        square1==square5 && square5==square9 && square9==0 ||
+        square3==square5 && square5==square7 && square7==0 ){
+        alert ("Player 2 Wins !!!");          
+        history.go(0)  
+  }
+  if   (square1==square2 && square2==square3 && square3==1 ||
+square4==square5 && square5==square6 && square6==1 ||    
+        square7==square8 && square8==square9 && square9==1 ||
+        square1==square4 && square4==square7 && square7==1 ||
+        square2==square5 && square5==square8 && square8==1 ||
+        square3==square6 && square6==square9 && square9==1 ||
+        square1==square5 && square5==square9 && square9==1 ||
+        square3==square5 && square5==square7 && square7==1 ){
+        alert ("Player 1 Wins !!!");
+		history.go(0)
+  }
+}
+
+function turnchange(t){
+  if (change == 1)  {
+    if (t == 0){
+        t = 1;
+        whogoesnow = "Turn: Player " + 1
+    }
+    else {
+        t = 0;
+	whogoesnow = "Turn: Player " + 2
+    }
+    
+  }
+  else {
+    t = t;
+  }
+  change = 1  
+  return (t); 
+}
+
+function changing(clicked){
+if (clicked == 1){            
+   spot = square1 ;}
+if (clicked == 2){
+   spot = square2 ;}
+if (clicked == 3){
+   spot = square3 ;}
+if (clicked == 4){
+   spot = square4 ;}
+if (clicked == 5){
+   spot = square5 ;}
+if (clicked == 6){
+   spot = square6 ;}
+if (clicked == 7){
+   spot = square7 ;}
+if (clicked == 8){
+   spot = square8 ;}
+if (clicked == 9){
+   spot = square9 ;}
+
+if (spot == -1){
+   if (t == 0){
+      xo = "  O  " ;	       	          
+      spot = 0             
+   }
+   else {
+      xo = "  X  "  ;              
+      spot = 1	     
+   }                              
+   if (clicked == 1){            
+      square1 = spot;}
+   if (clicked == 2){
+      square2 = spot ;}
+   if (clicked == 3){
+      square3 = spot ;}
+   if (clicked == 4){
+      square4 = spot ;}
+   if (clicked == 5){
+      square5 = spot ;}
+   if (clicked == 6){
+      square6 = spot ;}
+   if (clicked == 7){
+      square7 = spot ;}
+   if (clicked == 8){
+      square8 = spot ;}
+   if (clicked == 9){
+      square9 = spot ;}
+} 
+else {
+   if (spot == 0){
+       xo = "  O  ";}
+   if (spot == 1){
+       xo = "  X  ";}
+   change = 0
+}
+return (xo) ;
+}
+
+function change_b1(form){	
+    clicked = 1;    
+    changing(clicked) ;     
+    form.b1.value = xo; 
+    win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      
+   return;
+}
+function change_b2(form){	
+    clicked = 2;
+    changing(clicked) ;   
+    form.b2.value = xo;    
+    win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      	
+   return;
+    
+}
+
+function change_b3(form){	
+    clicked = 3;
+    changing(clicked) ;
+    form.b3.value = xo;         
+        win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      ; 	
+   return;  
+}
+
+function change_b4(form){	
+    clicked = 4;
+    changing(clicked) ;
+    form.b4.value = xo;    
+       win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      	
+   return;
+}
+
+function change_b5(form){	
+    clicked = 5;
+    changing(clicked) ;
+    form.b5.value = xo;    
+        win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      
+   return;
+}
+
+function change_b6(form){	
+    clicked = 6;
+    changing(clicked) ;
+    form.b6.value = xo;    
+        win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      
+    return;
+}
+
+function change_b7(form){	
+    clicked = 7;
+    changing(clicked) ;
+    form.b7.value = xo;    
+       win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      	
+   return;
+}
+
+function change_b8(form){	
+    clicked = 8;
+    changing(clicked) ;    
+    form.b8.value = xo;    
+        win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      
+   return;
+}
+
+function change_b9(form){	
+    clicked = 9;
+    changing(clicked) ;
+    form.b9.value = xo;    
+        win();
+	t = turnchange(t) ; 
+    form.whoseturn.value = whogoesnow      
+   return;
+}
+</SCRIPT>
+
+
+<SCRIPT name = "JavaScript">
+variables();
+</SCRIPT>
+
+<FORM>
+</br></br>
+<input type = "button" name = "whoseturn" 
+ value = "Turn: Player 1">	 
+<br><br><br>
+<table>
+<tr><td><input type = "button" name = "b1" value = "      "		 onClick =
+change_b1(this.form)>  
+    <td><input type = "button" name = "b2" value = "      "		 onClick = change_b2(this.form)> 
+    <td><input type = "button" name = "b3" value = "      "		 onClick =
+change_b3(this.form)> 
+<tr><td><input type = "button" name = "b4" value = "      "		 onClick =
+change_b4(this.form)> 
+    <td><input type = "button" name = "b5" value = "      "		 onClick = change_b5(this.form)> 
+    <td><input type = "button" name = "b6" value = "      "		 onClick =
+change_b6(this.form)> 
+<tr><td><input type = "button" name = "b7" value = "      "		 onClick =
+change_b7(this.form)> 
+    <td><input type = "button" name = "b8" value = "      "		 onClick = change_b8(this.form)>   
+    <td><input type = "button" name = "b9" value = "      "
+onClick = change_b9(this.form)> 
+</table>
+<br><br>
+</form>
+
+<INPUT TYPE="button" VALUE="New Game" onClick="history.go(0)" whoseturn="Turn: Player 1" >
+</center>
+</br>
+</br>
+<div style="text-align: center">
+	<ul>
+		<li class="navlist"><a href="index.html">Home</a> &nbsp; | &nbsp; 
+		<li class="navlist"><a href="index1.html">1 Player</a> 
+			
+	</ul>
+</div>
+</body>
+</html>
